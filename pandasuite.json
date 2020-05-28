@@ -1,6 +1,6 @@
 {
   "version": "3.0.0",
-  "main": "index.html",
+  "main": "",
 
   "system": {
     "autoSave": false,
@@ -266,10 +266,6 @@
   "resources": [
     {
       "id": "animationFolder",
-      "name": "BodyMovin zip file",
-      "locale_name": {
-        "fr_FR": "BodyMovin zip file"
-      },
       "type": "Zip"
     }
   ]

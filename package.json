@@ -1,12 +1,13 @@
 {
   "name": "after-effects-component",
   "version": "1.0.1",
-  "main": "index.html",
+  "homepage": "./",
   "repository": "https://github.com/pandasuite/after-effects-component.git",
   "author": "Benjamin Barbe <benjamin@pandasuite.com>",
   "license": "MIT",
   "scripts": {
-    "build": "rm -f pandasuite-component.zip && zip -r -X 'pandasuite-component.zip' * -x /node_modules/* package.json yarn.lock *.DS_Store*",
+    "start": "PORT=9000 serve",
+    "build": "rm -f pandasuite-component.zip && zip -r -X 'pandasuite-component.zip' * -x /node_modules/* package.json yarn.lock *.DS_Store* crossdomain.xml",
     "release": "yarn build && release-it --no-npm.publish"
   },
   "release-it": {
@@ -18,6 +19,7 @@
     }
   },
   "devDependencies": {
-    "release-it": "^13.6.1"
+    "release-it": "^13.6.1",
+    "serve": "^11.3.1"
   }
 }

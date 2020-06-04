@@ -30,7 +30,37 @@
         "locale_name": {
           "fr_FR": "Lecture de l'animation (frames)"
         },
-        "type": "Player"
+        "type": "Player",
+        "buttons": [
+          {
+            "id": "playPause",
+            "bind_action": "playPause"
+          },
+          {
+            "id": "stop",
+            "bind_action": "stop"
+          },
+          {
+            "id": "seek",
+            "bind_action": "seek",
+            "params": [
+              {
+                "id": "frame",
+                "bind_param": "frame"
+              }
+            ],
+            "values": [
+              {
+                "id": "minSeek",
+                "value": 0
+              },
+              {
+                "id": "maxSeek",
+                "bind_value_action": "getTotalFrames"
+              }
+            ]
+          }
+        ]
       },
       {
         "id": "setSnapshotData",

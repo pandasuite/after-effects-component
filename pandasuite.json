@@ -266,7 +266,8 @@
   "resources": [
     {
       "id": "animationFolder",
-      "type": "Zip"
+      "type": "Zip",
+      "required": true
     }
   ]
 

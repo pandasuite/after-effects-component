@@ -31,36 +31,27 @@
           "fr_FR": "Lecture de l'animation (frames)"
         },
         "type": "Player",
-        "buttons": [
-          {
-            "id": "playPause",
-            "bind_action": "playPause"
+        "value": {
+          "minSeek": 0,
+          "maxSeek": -1,
+          "currentSeek": 0
+        },
+        "controls": {
+          "playPause": {
+            "action_id": "playPause"
           },
-          {
-            "id": "stop",
-            "bind_action": "stop"
+          "stop": {
+            "action_id": "stop"
           },
-          {
-            "id": "seek",
-            "bind_action": "seek",
-            "params": [
-              {
-                "id": "frame",
-                "bind_param": "frame"
+          "seek": {
+            "action_id": "seek",
+            "action_params": {
+              "frame": {
+                "param_id": "frame"
               }
-            ],
-            "values": [
-              {
-                "id": "minSeek",
-                "value": 0
-              },
-              {
-                "id": "maxSeek",
-                "bind_value_action": "getTotalFrames"
-              }
-            ]
+            }
           }
-        ]
+        }
       },
       {
         "id": "setSnapshotData",

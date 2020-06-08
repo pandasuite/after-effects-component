@@ -8,51 +8,22 @@
     "actions": [
       {
         "id": "toMarker",
-        "name": "Change time",
+        "name": "Change frame",
         "locale_name": {
-          "fr_FR": "Changer Temps"
+          "fr_FR": "Changer frame"
         }
       }
     ],
     "events": [
       {
         "id": "triggerMarker",
-        "name": "Time",
+        "name": "Frame",
         "locale_name": {
-          "fr_FR": "Temps"
+          "fr_FR": "Frame"
         }
       }
     ],
-    "markers": [
-      {
-        "id": "controlBar",
-        "name": "Animation playback (frames)",
-        "locale_name": {
-          "fr_FR": "Lecture de l'animation (frames)"
-        },
-        "type": "Player",
-        "value": {
-          "minSeek": 0,
-          "maxSeek": -1,
-          "currentSeek": 0
-        },
-        "controls": {
-          "playPause": {
-            "action_id": "playPause"
-          },
-          "stop": {
-            "action_id": "stop"
-          },
-          "seek": {
-            "action_id": "seek",
-            "action_params": {
-              "frame": {
-                "param_id": "frame"
-              }
-            }
-          }
-        }
-      },
+    "controls": [
       {
         "id": "setSnapshotData",
         "name": "Add Frame",
@@ -62,6 +33,39 @@
       }
     ]
   },
+
+  "controls": [
+    {
+      "id": "controlBar",
+      "name": "Animation playback (frames)",
+      "locale_name": {
+        "fr_FR": "Lecture de l'animation (frames)"
+      },
+      "type": "Player",
+      "value": {
+        "minSeek": 0,
+        "maxSeek": -1,
+        "currentSeek": 0
+      },
+      "listeners": {
+        "playPause": {
+          "action_id": "playPause"
+        },
+        "stop": {
+          "action_id": "stop",
+          "event_id": "onStoppingPlay"
+        },
+        "seek": {
+          "action_id": "seek",
+          "action_params": {
+            "frame": {
+              "param_id": "frame"
+            }
+          }
+        }
+      }
+    }
+  ],
 
   "events": [
     {
@@ -99,28 +103,28 @@
       "id": "playPause",
       "name": "Play/Pause",
       "locale_name": {
-        "fr_FR": "Play/Pause"
+        "fr_FR": "Lecture/Pause"
       }
     },
     {
       "id": "play",
       "name": "Play",
       "locale_name": {
-        "fr_FR": "Play"
+        "fr_FR": "Lecture"
       }
     },
     {
       "id": "pause",
       "name": "Pause",
       "locale_name": {
-        "fr_FR": "Pause"
+        "fr_FR": "Mettre en pause"
       }
     },
     {
       "id": "stop",
       "name": "Stop",
       "locale_name": {
-        "fr_FR": "Stop"
+        "fr_FR": "Arrêter"
       }
     },
     {
@@ -137,7 +141,7 @@
       "id": "forward",
       "name": "Forward",
       "locale_name": {
-        "fr_FR": "Forward"
+        "fr_FR": "Avancer"
       },
       "params": [
         { "id": "frame", "name": "Frame", "locale_name": {"fr_FR": "Frame"}, "type": "Integer", "value": 1 }
@@ -147,7 +151,7 @@
       "id": "rewind",
       "name": "Rewind",
       "locale_name": {
-        "fr_FR": "Rewind"
+        "fr_FR": "Reculer"
       },
       "params": [
         { "id": "frame", "name": "Frame", "locale_name": {"fr_FR": "Frame"}, "type": "Integer", "value": 1 }
@@ -157,14 +161,14 @@
       "id": "restartFromBeginning",
       "name": "Restart from beginning",
       "locale_name": {
-        "fr_FR": "Restart from beginning"
+        "fr_FR": "Redémarrer au début"
       }
     },
     {
       "id": "setSpeed",
       "name": "Set speed",
       "locale_name": {
-        "fr_FR": "Set speed"
+        "fr_FR": "Mettre la vitesse"
       },
       "params": [
         { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
@@ -174,7 +178,7 @@
       "id": "increaseSpeed",
       "name": "Increase speed",
       "locale_name": {
-        "fr_FR": "Increase speed"
+        "fr_FR": "Augmenter la vitesse"
       },
       "params": [
         { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
@@ -184,7 +188,7 @@
       "id": "decreaseSpeed",
       "name": "Decrease speed",
       "locale_name": {
-        "fr_FR": "Decrease speed"
+        "fr_FR": "Diminuer la vitesse"
       },
       "params": [
         { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
@@ -195,9 +199,9 @@
   "properties": [
     {
       "id": "animationPath",
-      "name": "Animation object path",
+      "name": "File name",
       "locale_name": {
-        "fr_FR": "Animation object path"
+        "fr_FR": "Nom du fichier"
       },
       "type": "String",
       "value": "data.json"

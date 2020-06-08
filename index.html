@@ -4,7 +4,7 @@
   <title>After Effects Component for PandaSuite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/pandasuite-bridge-4.1.12.min.js"></script>
+  <script src="js/pandasuite-bridge-4.2.1.min.js"></script>
   <script src="js/lottie-v5.6.10.min.js"></script>
   <script type="text/javascript">
 
@@ -55,10 +55,7 @@
             PandaBridge.send('onStartingPlay');
           }
 
-          if (PandaBridge.isStudio) {
-            PandaBridge.send('__ps_seekMaxResult', animation.totalFrames);
-          }
-
+          triggerUpdatedData(PandaBridge.INITIALIZED);
         });
 
         animation.addEventListener('enterFrame', onTimeUpdate);
@@ -78,6 +75,7 @@
           setFrame(0);
 
           PandaBridge.send('onFinishPlaying');
+          triggerUpdatedData(PandaBridge.UPDATED, -1);
         });
 
         animation.setSpeed(properties.speed);
@@ -129,6 +127,7 @@
           animation.playCount = 0;
           nbLoop = properties.loop;
           PandaBridge.send('onStoppingPlay');
+          triggerUpdatedData(PandaBridge.UPDATED, -1);
         }
       });
 
@@ -219,6 +218,10 @@
       function onTimeUpdate() {
         var currentFrame = animation.currentRawFrame;
 
+        if (oldFrame != currentFrame) {
+          triggerUpdatedData(PandaBridge.UPDATED);
+        }
+
         /* Markers */
         if (markers) {
           markers.forEach(function(marker) {
@@ -254,6 +257,23 @@
             (oldValue > currentValue && (testValue >= minvalue && testValue < maxvalue)))));
       }
 
+      function triggerUpdatedData(eventName, currentSeek) {
+        if (PandaBridge.isStudio) {
+          currentSeek = currentSeek || animation.currentRawFrame;
+          PandaBridge.send(eventName, {
+            controls: [
+              {
+                id: 'controlBar',
+                value: {
+                  minSeek: 0,
+                  maxSeek: animation.totalFrames,
+                  currentSeek: currentSeek
+                }
+              }
+            ]
+          });
+        }
+      }
     });
 
   </script>

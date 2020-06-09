@@ -72,28 +72,28 @@
       "id": "onStartingPlay",
       "name": "Starting play",
       "locale_name": {
-        "fr_FR": "Starting play"
+        "fr_FR": "Commence lecture"
       }
     },
     {
       "id": "onPausePlaying",
       "name": "Pause playing",
       "locale_name": {
-        "fr_FR": "Pause playing"
+        "fr_FR": "Mise en pause"
       }
     },
     {
       "id": "onStoppingPlay",
       "name": "Stopping play",
       "locale_name": {
-        "fr_FR": "Stopping play"
+        "fr_FR": "Arrêt lecture"
       }
     },
     {
       "id": "onFinishPlaying",
       "name": "Finish playing",
       "locale_name": {
-        "fr_FR": "Finish playing"
+        "fr_FR": "Fin lecture"
       }
     }
   ],

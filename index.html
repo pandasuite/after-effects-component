@@ -82,6 +82,16 @@
         currentSpeed = properties.speed;
       }
 
+      PandaBridge.onUpdate(function(pandaData) {
+        properties = pandaData.properties;
+        markers = pandaData.markers;
+
+        if (currentSpeed != properties.speed && animation) {
+          animation.setSpeed(properties.speed);
+          currentSpeed = properties.speed;
+        }
+      });
+
       /* Markers */
 
       PandaBridge.getSnapshotData(function() {

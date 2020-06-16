@@ -31,7 +31,19 @@
           "fr_FR": "Ajouter Frame"
         }
       }
-    ]
+    ],
+    "defaults": {
+      "markers": {
+        "description": {
+          "value": "%s",
+          "args": [
+            {
+              "key": "id"
+            }
+          ]
+        }
+      }
+    }
   },
 
   "controls": [

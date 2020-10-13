@@ -4,8 +4,9 @@
   <title>After Effects Component for PandaSuite</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/pandasuite-bridge-4.2.1.min.js"></script>
-  <script src="js/lottie-v5.6.10.min.js"></script>
+  <script src="js/pandasuite-bridge-4.2.3.min.js"></script>
+  <script src="js/lottie-v5.7.3.min.js"></script>
+  <script src="js/html2canvas.min.js"></script>
   <script type="text/javascript">
 
     var properties = null;
@@ -58,6 +59,10 @@
           triggerUpdatedData(PandaBridge.INITIALIZED);
         });
 
+        animation.addEventListener('DOMLoaded', function () {
+          sendScreenshot();
+        });
+
         animation.addEventListener('enterFrame', onTimeUpdate);
         animation.addEventListener('loopComplete', function (e) {
           if (nbLoop > 0) {
@@ -103,6 +108,12 @@
 
       PandaBridge.setSnapshotData(function(pandaData) {
         setFrame(parseInt(pandaData.data.id));
+
+        if (pandaData.params && pandaData.params.isDefault) {
+          requestAnimationFrame(function () {
+            sendScreenshot();
+          });
+        }
       });
 
       /* Actions */
@@ -284,6 +295,42 @@
           });
         }
       }
+
+      function sendScreenshot() {
+        if (PandaBridge.isStudio) {
+          html2canvas(document.body, {
+            backgroundColor: null,
+            scale: 2,
+          }).then(function (canvas) {
+            var renderedSvg = document.querySelector('svg');
+            var ratioSvg = renderedSvg.getAttribute('height') / renderedSvg.getAttribute('width');
+            var ratioCanvas = canvas.height / canvas.width;
+
+            var resultCanvas = document.createElement('canvas');
+            var ctx = resultCanvas.getContext('2d');
+
+            resultCanvas.setAttribute('width', canvas.width);
+            resultCanvas.setAttribute('height', canvas.height);
+
+            var resultWidth = canvas.width;
+            var resultHeight = canvas.height;
+
+            if (ratioSvg < ratioCanvas) {
+              resultHeight = canvas.width * ratioSvg;
+            } else {
+              resultWidth = canvas.height * ratioSvg;
+            }
+
+            ctx.drawImage(
+              canvas, 0, 0, canvas.width, canvas.height,
+              (canvas.width - resultWidth) / 2, (canvas.height - resultHeight) / 2, resultWidth, resultHeight
+            );
+
+            PandaBridge.send(PandaBridge.SCREENSHOT_RESULT, [resultCanvas.toDataURL('image/png')]);
+          });
+        }
+      }
+
     });
 
   </script>

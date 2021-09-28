@@ -220,18 +220,18 @@
     },
     {
       "id": "loop",
-      "name": "Loop",
+      "name": "Loop mode",
       "locale_name": {
-        "fr_FR": "Boucle"
+        "fr_FR": "En boucle"
       },
       "type": "Integer",
       "value": -1
     },
     {
       "id": "autoPlay",
-      "name": "Auto play",
+      "name": "Autoplay",
       "locale_name": {
-        "fr_FR": "Lecture auto."
+        "fr_FR": "Lecture automatique"
       },
       "type": "Boolean",
       "value": true
@@ -265,18 +265,18 @@
     },
     {
       "id": "useNativeIOS",
-      "name": "Use the native iOS component",
+      "name": "Native iOS",
       "locale_name": {
-        "fr_FR": "Utiliser le composant iOS natif"
+        "fr_FR": "iOS natif"
       },
       "type": "Boolean",
       "value": false
     },
     {
       "id": "useNativeAndroid",
-      "name": "Use the native Android component",
+      "name": "Native Android",
       "locale_name": {
-        "fr_FR": "Utiliser le composant Android natif"
+        "fr_FR": "Android natif"
       },
       "type": "Boolean",
       "value": false

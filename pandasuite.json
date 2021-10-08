@@ -216,7 +216,8 @@
         "fr_FR": "Nom du fichier"
       },
       "type": "String",
-      "value": "data.json"
+      "value": "data.json",
+      "bindable": true
     },
     {
       "id": "loop",

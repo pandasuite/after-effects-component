@@ -217,7 +217,8 @@
       },
       "type": "String",
       "value": "data.json",
-      "bindable": true
+      "bindable": true,
+      "required": true
     },
     {
       "id": "loop",

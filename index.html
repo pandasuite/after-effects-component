@@ -6,7 +6,6 @@
   <link rel="stylesheet" href="css/style.css">
   <script src="js/pandasuite-bridge-4.2.3.min.js"></script>
   <script src="js/lottie-v5.7.13.min.js"></script>
-  <script src="js/html2canvas.min.js"></script>
   <script type="text/javascript">
 
     var properties = null;
@@ -40,7 +39,7 @@
 
         animation = bodymovin.loadAnimation({
           container: document.getElementById('container'),
-          renderer: 'svg',
+          renderer: PandaBridge.isStudio ? 'canvas' : 'svg',
           loop: loop,
           autoplay: false,
           path: jsonUrl
@@ -298,36 +297,13 @@
 
       function sendScreenshot() {
         if (PandaBridge.isStudio) {
-          html2canvas(document.body, {
-            backgroundColor: null,
-            scale: 2,
-          }).then(function (canvas) {
-            var renderedSvg = document.querySelector('svg');
-            var ratioSvg = renderedSvg.getAttribute('height') / renderedSvg.getAttribute('width');
-            var ratioCanvas = canvas.height / canvas.width;
+          var canvas = document.querySelector('canvas');
 
-            var resultCanvas = document.createElement('canvas');
-            var ctx = resultCanvas.getContext('2d');
-
-            resultCanvas.setAttribute('width', canvas.width);
-            resultCanvas.setAttribute('height', canvas.height);
-
-            var resultWidth = canvas.width;
-            var resultHeight = canvas.height;
-
-            if (ratioSvg < ratioCanvas) {
-              resultHeight = canvas.width * ratioSvg;
-            } else {
-              resultWidth = canvas.height * ratioSvg;
-            }
-
-            ctx.drawImage(
-              canvas, 0, 0, canvas.width, canvas.height,
-              (canvas.width - resultWidth) / 2, (canvas.height - resultHeight) / 2, resultWidth, resultHeight
-            );
-
-            PandaBridge.send(PandaBridge.SCREENSHOT_RESULT, [resultCanvas.toDataURL('image/png')]);
-          });
+          if (canvas) {
+            PandaBridge.send(PandaBridge.SCREENSHOT_RESULT, [
+              canvas.toDataURL('image/png')
+            ]);
+          }
         }
       }
 

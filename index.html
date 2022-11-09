@@ -33,7 +33,7 @@
 
       function myInit() {
 
-        var jsonUrl = PandaBridge.resolvePath('animationFolder', './') + '/' + properties.animationPath;
+        var jsonUrl = PandaBridge.resolvePath('animationFolder', './') + properties.animationPath;
         var loop = properties.loop == -1 ? true : (properties.loop == 0 ? false : properties.loop + 1);
         nbLoop = properties.loop;
 

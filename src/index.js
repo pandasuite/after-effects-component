@@ -3,6 +3,7 @@
 /* eslint-disable no-use-before-define */
 import PandaBridge from 'pandasuite-bridge';
 import bodymovin from 'lottie-web';
+import './index.css';
 
 let properties = null;
 let markers = null;

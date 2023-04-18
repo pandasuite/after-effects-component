@@ -27,7 +27,7 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "lottie-web": "^5.9.6",
+    "lottie-web": "^5.11.0",
     "pandasuite-bridge": "^4.5.0"
   },
   "release-it": {

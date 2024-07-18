@@ -72,10 +72,6 @@ PandaBridge.init(() => {
       animation.playCount = -1;
       nbLoop = properties.loop;
 
-      /* BodyMovin bug: it call loopComplete on the futur start without this two lines */
-      fromSynchro = true;
-      setFrame(0);
-
       PandaBridge.send("onFinishPlaying");
       triggerUpdatedData(PandaBridge.UPDATED, -1);
     });
@@ -115,10 +111,19 @@ PandaBridge.init(() => {
 
   /* Actions */
 
+  const playAction = () => {
+    if (animation.playCount === -1) {
+      animation.playCount = 0;
+      animation.goToAndPlay(animation.currentRawFrame);
+    } else {
+      animation.play();
+    }
+    PandaBridge.send("onStartingPlay");
+  };
+
   PandaBridge.listen("playPause", () => {
     if (animation && animation.isPaused) {
-      animation.play();
-      PandaBridge.send("onStartingPlay");
+      playAction();
     } else if (animation) {
       animation.pause();
       PandaBridge.send("onPausePlaying");
@@ -127,8 +132,7 @@ PandaBridge.init(() => {
 
   PandaBridge.listen("play", () => {
     if (animation) {
-      animation.play();
-      PandaBridge.send("onStartingPlay");
+      playAction();
     }
   });
 

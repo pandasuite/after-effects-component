@@ -33,7 +33,7 @@ PandaBridge.init(() => {
         ? true
         : properties.loop === 0
         ? false
-        : properties.loop + 1;
+        : properties.loop;
     nbLoop = properties.loop;
 
     animation = bodymovin.loadAnimation({
@@ -284,10 +284,10 @@ PandaBridge.init(() => {
         (animation.totalFrames - 1);
       if (properties.loop !== -1) {
         percent =
-          ((parseInt(animation.currentRawFrame) +
-            (properties.loop - nbLoop) * animation.totalFrames) *
+          ((animation.currentRawFrame +
+            animation.playCount * (animation.totalFrames - 1)) *
             100) /
-          (animation.totalFrames + properties.loop * animation.totalFrames - 1);
+          ((animation.totalFrames - 1) * (animation.loop + 1));
       }
       PandaBridge.send("synchronize", [percent, "frame", true]);
     } else {

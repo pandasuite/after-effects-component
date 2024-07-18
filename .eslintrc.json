@@ -1,15 +1,20 @@
 {
-    "env": {
-        "browser": true,
-        "es2020": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
-    "parserOptions": {
-        "ecmaVersion": 11,
-        "sourceType": "module"
-    },
-    "rules": {
-    }
+  "env": {
+    "browser": true,
+    "es2020": true
+  },
+  "extends": ["airbnb-base"],
+  "parserOptions": {
+    "ecmaVersion": 11,
+    "sourceType": "module"
+  },
+  "rules": {
+    "quotes": ["error", "double"],
+    "operator-linebreak": ["off"],
+    "no-nested-ternary": "off",
+    "no-use-before-define": "off",
+    "no-mixed-operators": "off",
+    "radix": "off",
+    "indent": "off"
+  }
 }

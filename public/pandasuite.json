@@ -146,7 +146,13 @@
         "fr_FR": "Seek"
       },
       "params": [
-        { "id": "frame", "name": "Frame", "locale_name": {"fr_FR": "Frame"}, "type": "Integer", "value": 0 }
+        {
+          "id": "frame",
+          "name": "Frame",
+          "locale_name": { "fr_FR": "Frame" },
+          "type": "Integer",
+          "value": 0
+        }
       ]
     },
     {
@@ -156,7 +162,13 @@
         "fr_FR": "Avancer"
       },
       "params": [
-        { "id": "frame", "name": "Frame", "locale_name": {"fr_FR": "Frame"}, "type": "Integer", "value": 1 }
+        {
+          "id": "frame",
+          "name": "Frame",
+          "locale_name": { "fr_FR": "Frame" },
+          "type": "Integer",
+          "value": 1
+        }
       ]
     },
     {
@@ -166,7 +178,13 @@
         "fr_FR": "Reculer"
       },
       "params": [
-        { "id": "frame", "name": "Frame", "locale_name": {"fr_FR": "Frame"}, "type": "Integer", "value": 1 }
+        {
+          "id": "frame",
+          "name": "Frame",
+          "locale_name": { "fr_FR": "Frame" },
+          "type": "Integer",
+          "value": 1
+        }
       ]
     },
     {
@@ -183,7 +201,13 @@
         "fr_FR": "Mettre la vitesse"
       },
       "params": [
-        { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
+        {
+          "id": "speed",
+          "name": "Speed",
+          "locale_name": { "fr_FR": "Vitesse" },
+          "type": "Float",
+          "value": 1
+        }
       ]
     },
     {
@@ -193,7 +217,13 @@
         "fr_FR": "Augmenter la vitesse"
       },
       "params": [
-        { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
+        {
+          "id": "speed",
+          "name": "Speed",
+          "locale_name": { "fr_FR": "Vitesse" },
+          "type": "Float",
+          "value": 1
+        }
       ]
     },
     {
@@ -203,7 +233,13 @@
         "fr_FR": "Diminuer la vitesse"
       },
       "params": [
-        { "id": "speed", "name": "Speed", "locale_name": {"fr_FR": "Vitesse"}, "type": "Float", "value": 1 }
+        {
+          "id": "speed",
+          "name": "Speed",
+          "locale_name": { "fr_FR": "Vitesse" },
+          "type": "Float",
+          "value": 1
+        }
       ]
     }
   ],
@@ -221,15 +257,6 @@
       "required": true
     },
     {
-      "id": "loop",
-      "name": "Loop mode",
-      "locale_name": {
-        "fr_FR": "En boucle"
-      },
-      "type": "Integer",
-      "value": -1
-    },
-    {
       "id": "autoPlay",
       "name": "Autoplay",
       "locale_name": {
@@ -239,13 +266,36 @@
       "value": true
     },
     {
+      "id": "loopMode",
+      "name": "Loop",
+      "locale_name": {
+        "fr_FR": "En boucle"
+      },
+      "type": "Boolean",
+      "value": true
+    },
+    {
+      "id": "loop",
+      "name": "Repetitions",
+      "locale_name": {
+        "fr_FR": "Répétitions"
+      },
+      "type": "Integer",
+      "restrict": {
+        "min": 0.0
+      },
+      "value": 0,
+      "hidden": "properties.loopMode.value"
+    },
+    {
       "id": "speed",
       "name": "Speed",
       "locale_name": {
         "fr_FR": "Vitesse"
       },
       "type": "Float",
-      "value": 1
+      "value": 1,
+      "separator": true
     },
     {
       "id": "minSpeed",
@@ -272,7 +322,8 @@
         "fr_FR": "iOS natif"
       },
       "type": "Boolean",
-      "value": false
+      "value": false,
+      "separator": true
     },
     {
       "id": "useNativeAndroid",
@@ -309,5 +360,4 @@
       "required": true
     }
   ]
-
 }

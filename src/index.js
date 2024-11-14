@@ -24,16 +24,15 @@ PandaBridge.init(() => {
     }
   });
 
+  function getAnimationLoop(props) {
+    return props.loopMode ? true : props.loop === 0 ? false : props.loop;
+  }
+
   function myInit() {
     const jsonUrl =
       PandaBridge.resolvePath("animationFolder", "./") +
       properties.animationPath;
-    const loop =
-      properties.loop === -1
-        ? true
-        : properties.loop === 0
-        ? false
-        : properties.loop;
+    const loop = getAnimationLoop(properties);
     nbLoop = properties.loop;
 
     animation = bodymovin.loadAnimation({
@@ -70,7 +69,7 @@ PandaBridge.init(() => {
       /* BodyMovin use playCount for stopping the animation (refering to loop property) */
       /* We reset it to act like a new play */
       animation.playCount = -1;
-      nbLoop = properties.loop;
+      nbLoop = properties.loopMode ? -1 : properties.loop;
 
       PandaBridge.send("onFinishPlaying");
       triggerUpdatedData(PandaBridge.UPDATED, -1);
@@ -87,6 +86,10 @@ PandaBridge.init(() => {
     if (currentSpeed !== properties.speed && animation) {
       animation.setSpeed(properties.speed);
       currentSpeed = properties.speed;
+    }
+
+    if (animation && getAnimationLoop(properties) !== animation.loop) {
+      animation.loop = getAnimationLoop(properties);
     }
   });
 
@@ -147,7 +150,7 @@ PandaBridge.init(() => {
     if (animation) {
       animation.stop();
       animation.playCount = 0;
-      nbLoop = properties.loop;
+      nbLoop = properties.loopMode ? -1 : properties.loop;
       PandaBridge.send("onStoppingPlay");
       triggerUpdatedData(PandaBridge.UPDATED, -1);
     }
@@ -223,7 +226,7 @@ PandaBridge.init(() => {
       fromSynchro = true;
 
       let additionalFrames = 0;
-      if (properties.loop !== -1) {
+      if (!properties.loopMode) {
         nbLoop =
           properties.loop - Math.floor(percent / (100 / (properties.loop + 1)));
         additionalFrames = properties.loop * animation.totalFrames;
@@ -286,7 +289,7 @@ PandaBridge.init(() => {
       let percent =
         (parseInt(animation.currentRawFrame) * 100) /
         (animation.totalFrames - 1);
-      if (properties.loop !== -1) {
+      if (!properties.loopMode) {
         percent =
           ((animation.currentRawFrame +
             animation.playCount * (animation.totalFrames - 1)) *

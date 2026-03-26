@@ -1,7 +1,14 @@
 {
+  "meta": {
+    "stype": "after-effects",
+    "componentURL": "https://github.com/pandasuite/after-effects-component/",
+    "description": "Plays Lottie/After Effects animations with frame-level markers, playback control (play, pause, seek), and synchronization with other components.",
+    "locale_description": {
+      "fr_FR": "Lit des animations Lottie/After Effects avec des marqueurs au niveau des images, contrôle de lecture (lecture, pause, recherche) et synchronisation avec d'autres composants."
+    }
+  },
   "version": "3.0.0",
   "main": "",
-
   "system": {
     "autoSave": false,
     "htmlBehavior": false,
@@ -11,6 +18,10 @@
         "name": "Change frame",
         "locale_name": {
           "fr_FR": "Changer frame"
+        },
+        "description": "Jump to a specific frame marker in the animation.",
+        "locale_description": {
+          "fr_FR": "Sauter à un marqueur d'image spécifique dans l'animation."
         }
       }
     ],
@@ -20,6 +31,10 @@
         "name": "Frame",
         "locale_name": {
           "fr_FR": "Frame"
+        },
+        "description": "Fires when the animation reaches a frame marker.",
+        "locale_description": {
+          "fr_FR": "Se déclenche quand l'animation atteint un marqueur d'image."
         }
       }
     ],
@@ -29,6 +44,10 @@
         "name": "Add Frame",
         "locale_name": {
           "fr_FR": "Ajouter Frame"
+        },
+        "description": "Update the player control bar state (position, duration, playing state).",
+        "locale_description": {
+          "fr_FR": "Mettre à jour l'état de la barre de contrôle (position, durée, état de lecture)."
         }
       }
     ],
@@ -45,7 +64,6 @@
       }
     }
   },
-
   "controls": [
     {
       "id": "controlBar",
@@ -75,16 +93,23 @@
             }
           }
         }
+      },
+      "description": "Animation player control bar with play/pause and seek controls.",
+      "locale_description": {
+        "fr_FR": "Barre de contrôle du lecteur d'animation avec lecture/pause et recherche."
       }
     }
   ],
-
   "events": [
     {
       "id": "onStartingPlay",
       "name": "Starting play",
       "locale_name": {
         "fr_FR": "Commence lecture"
+      },
+      "description": "Fires when the animation starts playing.",
+      "locale_description": {
+        "fr_FR": "Se déclenche quand l'animation commence à jouer."
       }
     },
     {
@@ -92,6 +117,10 @@
       "name": "Pause playing",
       "locale_name": {
         "fr_FR": "Mise en pause"
+      },
+      "description": "Fires when the animation is paused.",
+      "locale_description": {
+        "fr_FR": "Se déclenche quand l'animation est mise en pause."
       }
     },
     {
@@ -99,6 +128,10 @@
       "name": "Stopping play",
       "locale_name": {
         "fr_FR": "Arrêt lecture"
+      },
+      "description": "Fires when the animation is stopped.",
+      "locale_description": {
+        "fr_FR": "Se déclenche quand l'animation est arrêtée."
       }
     },
     {
@@ -106,16 +139,23 @@
       "name": "Finish playing",
       "locale_name": {
         "fr_FR": "Fin lecture"
+      },
+      "description": "Fires when the animation reaches the last frame.",
+      "locale_description": {
+        "fr_FR": "Se déclenche quand l'animation atteint la dernière image."
       }
     }
   ],
-
   "actions": [
     {
       "id": "playPause",
       "name": "Play/Pause",
       "locale_name": {
         "fr_FR": "Lecture/Pause"
+      },
+      "description": "Toggle between play and pause states.",
+      "locale_description": {
+        "fr_FR": "Basculer entre les états lecture et pause."
       }
     },
     {
@@ -123,6 +163,10 @@
       "name": "Play",
       "locale_name": {
         "fr_FR": "Lecture"
+      },
+      "description": "Start or resume animation playback.",
+      "locale_description": {
+        "fr_FR": "Démarrer ou reprendre la lecture de l'animation."
       }
     },
     {
@@ -130,6 +174,10 @@
       "name": "Pause",
       "locale_name": {
         "fr_FR": "Mettre en pause"
+      },
+      "description": "Pause animation playback at the current frame.",
+      "locale_description": {
+        "fr_FR": "Mettre en pause la lecture de l'animation à l'image courante."
       }
     },
     {
@@ -137,6 +185,10 @@
       "name": "Stop",
       "locale_name": {
         "fr_FR": "Arrêter"
+      },
+      "description": "Stop playback and reset to the first frame.",
+      "locale_description": {
+        "fr_FR": "Arrêter la lecture et revenir à la première image."
       }
     },
     {
@@ -149,11 +201,21 @@
         {
           "id": "frame",
           "name": "Frame",
-          "locale_name": { "fr_FR": "Frame" },
+          "locale_name": {
+            "fr_FR": "Frame"
+          },
           "type": "Integer",
-          "value": 0
+          "value": 0,
+          "description": "Target frame number to seek to.",
+          "locale_description": {
+            "fr_FR": "Numéro d'image cible vers laquelle sauter."
+          }
         }
-      ]
+      ],
+      "description": "Jump to a specific frame in the animation.",
+      "locale_description": {
+        "fr_FR": "Sauter à une image spécifique de l'animation."
+      }
     },
     {
       "id": "forward",
@@ -165,11 +227,21 @@
         {
           "id": "frame",
           "name": "Frame",
-          "locale_name": { "fr_FR": "Frame" },
+          "locale_name": {
+            "fr_FR": "Frame"
+          },
           "type": "Integer",
-          "value": 1
+          "value": 1,
+          "description": "Number of frames to advance.",
+          "locale_description": {
+            "fr_FR": "Nombre d'images à avancer."
+          }
         }
-      ]
+      ],
+      "description": "Advance the animation by a number of frames.",
+      "locale_description": {
+        "fr_FR": "Avancer l'animation d'un nombre d'images."
+      }
     },
     {
       "id": "rewind",
@@ -181,17 +253,31 @@
         {
           "id": "frame",
           "name": "Frame",
-          "locale_name": { "fr_FR": "Frame" },
+          "locale_name": {
+            "fr_FR": "Frame"
+          },
           "type": "Integer",
-          "value": 1
+          "value": 1,
+          "description": "Number of frames to rewind.",
+          "locale_description": {
+            "fr_FR": "Nombre d'images à reculer."
+          }
         }
-      ]
+      ],
+      "description": "Rewind the animation by a number of frames.",
+      "locale_description": {
+        "fr_FR": "Reculer l'animation d'un nombre d'images."
+      }
     },
     {
       "id": "restartFromBeginning",
       "name": "Restart from beginning",
       "locale_name": {
         "fr_FR": "Redémarrer au début"
+      },
+      "description": "Stop and restart the animation from the first frame.",
+      "locale_description": {
+        "fr_FR": "Arrêter et redémarrer l'animation depuis la première image."
       }
     },
     {
@@ -204,11 +290,21 @@
         {
           "id": "speed",
           "name": "Speed",
-          "locale_name": { "fr_FR": "Vitesse" },
+          "locale_name": {
+            "fr_FR": "Vitesse"
+          },
           "type": "Float",
-          "value": 1
+          "value": 1,
+          "description": "Target playback speed multiplier.",
+          "locale_description": {
+            "fr_FR": "Multiplicateur de vitesse de lecture cible."
+          }
         }
-      ]
+      ],
+      "description": "Set the animation playback speed to a specific value.",
+      "locale_description": {
+        "fr_FR": "Définir la vitesse de lecture de l'animation à une valeur spécifique."
+      }
     },
     {
       "id": "increaseSpeed",
@@ -220,11 +316,21 @@
         {
           "id": "speed",
           "name": "Speed",
-          "locale_name": { "fr_FR": "Vitesse" },
+          "locale_name": {
+            "fr_FR": "Vitesse"
+          },
           "type": "Float",
-          "value": 1
+          "value": 1,
+          "description": "Amount to add to the current speed.",
+          "locale_description": {
+            "fr_FR": "Valeur à ajouter à la vitesse actuelle."
+          }
         }
-      ]
+      ],
+      "description": "Increase the playback speed by a given amount.",
+      "locale_description": {
+        "fr_FR": "Augmenter la vitesse de lecture d'une valeur donnée."
+      }
     },
     {
       "id": "decreaseSpeed",
@@ -236,14 +342,23 @@
         {
           "id": "speed",
           "name": "Speed",
-          "locale_name": { "fr_FR": "Vitesse" },
+          "locale_name": {
+            "fr_FR": "Vitesse"
+          },
           "type": "Float",
-          "value": 1
+          "value": 1,
+          "description": "Amount to subtract from the current speed.",
+          "locale_description": {
+            "fr_FR": "Valeur à soustraire de la vitesse actuelle."
+          }
         }
-      ]
+      ],
+      "description": "Decrease the playback speed by a given amount.",
+      "locale_description": {
+        "fr_FR": "Diminuer la vitesse de lecture d'une valeur donnée."
+      }
     }
   ],
-
   "properties": [
     {
       "id": "animationPath",
@@ -254,7 +369,11 @@
       "type": "String",
       "value": "data.json",
       "bindable": true,
-      "required": true
+      "required": true,
+      "description": "Path or URL to the Lottie animation JSON file.",
+      "locale_description": {
+        "fr_FR": "Chemin ou URL du fichier JSON d'animation Lottie."
+      }
     },
     {
       "id": "autoPlay",
@@ -263,7 +382,11 @@
         "fr_FR": "Lecture automatique"
       },
       "type": "Boolean",
-      "value": true
+      "value": true,
+      "description": "Start playing the animation automatically when the component loads.",
+      "locale_description": {
+        "fr_FR": "Démarrer la lecture de l'animation automatiquement au chargement du composant."
+      }
     },
     {
       "id": "loopMode",
@@ -272,7 +395,11 @@
         "fr_FR": "En boucle"
       },
       "type": "Boolean",
-      "value": true
+      "value": true,
+      "description": "Loop behavior for the animation (none, loop, bounce).",
+      "locale_description": {
+        "fr_FR": "Comportement de boucle de l'animation (aucun, boucle, rebond)."
+      }
     },
     {
       "id": "loop",
@@ -285,7 +412,11 @@
         "min": 0.0
       },
       "value": 0,
-      "hidden": "properties.loopMode.value"
+      "hidden": "properties.loopMode.value",
+      "description": "Number of times to repeat the animation. Active when loop mode is set to loop or bounce.",
+      "locale_description": {
+        "fr_FR": "Nombre de fois que l'animation se répète. Actif quand le mode de boucle est sur boucle ou rebond."
+      }
     },
     {
       "id": "speed",
@@ -295,7 +426,11 @@
       },
       "type": "Float",
       "value": 1,
-      "separator": true
+      "separator": true,
+      "description": "Playback speed multiplier for the animation.",
+      "locale_description": {
+        "fr_FR": "Multiplicateur de vitesse de lecture de l'animation."
+      }
     },
     {
       "id": "minSpeed",
@@ -304,7 +439,11 @@
         "fr_FR": "Vitesse minimum"
       },
       "type": "Float",
-      "value": 0
+      "value": 0,
+      "description": "Minimum allowed playback speed.",
+      "locale_description": {
+        "fr_FR": "Vitesse de lecture minimale autorisée."
+      }
     },
     {
       "id": "maxSpeed",
@@ -313,7 +452,11 @@
         "fr_FR": "Vitesse maximum"
       },
       "type": "Float",
-      "value": 10
+      "value": 10,
+      "description": "Maximum allowed playback speed.",
+      "locale_description": {
+        "fr_FR": "Vitesse de lecture maximale autorisée."
+      }
     },
     {
       "id": "useNativeIOS",
@@ -323,7 +466,11 @@
       },
       "type": "Boolean",
       "value": false,
-      "separator": true
+      "separator": true,
+      "description": "Use native iOS Lottie renderer for better performance on iOS devices.",
+      "locale_description": {
+        "fr_FR": "Utiliser le moteur Lottie natif iOS pour de meilleures performances sur les appareils iOS."
+      }
     },
     {
       "id": "useNativeAndroid",
@@ -332,16 +479,23 @@
         "fr_FR": "Android natif"
       },
       "type": "Boolean",
-      "value": false
+      "value": false,
+      "description": "Use native Android Lottie renderer for better performance on Android devices.",
+      "locale_description": {
+        "fr_FR": "Utiliser le moteur Lottie natif Android pour de meilleures performances sur les appareils Android."
+      }
     }
   ],
-
   "synchronization": [
     {
       "id": "frame",
       "name": "Synchronize frame values",
       "locale_name": {
         "fr_FR": "Synchroniser les frames"
+      },
+      "description": "Synchronize the current animation frame with another component.",
+      "locale_description": {
+        "fr_FR": "Synchroniser l'image courante de l'animation avec un autre composant."
       }
     },
     {
@@ -349,15 +503,22 @@
       "name": "Synchronize speed",
       "locale_name": {
         "fr_FR": "Synchroniser le temps"
+      },
+      "description": "Synchronize the playback speed with another component.",
+      "locale_description": {
+        "fr_FR": "Synchroniser la vitesse de lecture avec un autre composant."
       }
     }
   ],
-
   "resources": [
     {
       "id": "animationFolder",
       "type": "Zip",
-      "required": true
+      "required": true,
+      "description": "Lottie animation resource folder containing the JSON and assets.",
+      "locale_description": {
+        "fr_FR": "Dossier de ressources de l'animation Lottie contenant le JSON et les assets."
+      }
     }
   ]
 }

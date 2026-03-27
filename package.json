@@ -19,7 +19,7 @@
     "eslint-plugin-import": "^2.21.2",
     "postcss": "^8.3.0",
     "postcss-loader": "4",
-    "release-it": "^13.6.3",
+    "release-it": "^13.7.2",
     "style-loader": "^2.0.0",
     "tailwindcss": "^2.1.2",
     "webpack": "^4.43.0",

@@ -24,7 +24,7 @@
     "tailwindcss": "^2.1.2",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11",
-    "webpack-dev-server": "^3.11.0"
+    "webpack-dev-server": "^6.0.0"
   },
   "dependencies": {
     "lottie-web": "^5.12.2",
